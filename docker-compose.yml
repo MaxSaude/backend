@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15  
+    container_name: prisma_postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: maxsaude
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  prisma:
+    image: node:20 
+    container_name: prisma_backend
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "npm install && npx prisma migrate deploy && npm run dev"
+    depends_on:
+      - database
+
+volumes:
+  postgres_data:

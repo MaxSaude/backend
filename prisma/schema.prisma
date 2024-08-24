@@ -18,3 +18,12 @@ model usuario {
   nome   String
   senha  String
 }
+
+model Empresa {
+  codigo        String   @id @default(uuid())
+  razaoSocial   String   @unique
+  nomeFantasia  String
+  cnpj          String
+  dataCriacao   DateTime @default(now())
+  dataAlteracao DateTime @default(now())
+}

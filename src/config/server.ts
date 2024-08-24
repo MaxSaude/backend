@@ -1,15 +1,13 @@
 import fastify from "fastify";
 import cors from '@fastify/cors'
+import { empresaRoutes } from "../models/empresas/routes/empresaRoutes";
 
 
 const server = fastify()
 const PORT = 3333;
 
-server.register(iesRoutes)
-server.register(disciplinaRoutes)
-server.register(tarefaRoutes);
-server.register(usuarioRoutes);
-server.register(turmaRoutes)
+server.register(empresaRoutes)
+
 
 server.register(cors, { 
     allowedHeaders: '*'

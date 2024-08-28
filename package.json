@@ -1,8 +1,10 @@
 {
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "prisma": "^5.18.0"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@fastify/cors": "^9.0.1",
     "@prisma/client": "^5.18.0",
     "axios": "^1.7.3",

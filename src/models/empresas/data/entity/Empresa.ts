@@ -2,12 +2,7 @@ export interface Empresa {
     codigo: string;
     razaoSocial: string;
     nomeFantasia: string;
-    cnpj: number;
-    cep: number;
-    endereco: string;
-    bairro: string;
-    numero: string;
-    cidade: string;
+    cnpj: string;
   }
   
   export interface EmpresaCriacaoDto {

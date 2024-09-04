@@ -8,7 +8,7 @@ import { SalvarEmpresaUseCase } from "../models/empresas/domain/SalvarUseCase";
 
 describe("AlteracaoEmpresaTest", () =>{
 
-    let alterarEmpresaUseCase : AlterarEmpresaUseCase;
+    let alterarEmpresaUseCase: AlterarEmpresaUseCase;
     let salvarEmpresaUseCase: SalvarEmpresaUseCase; 
     let fakeService: any;
 

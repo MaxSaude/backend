@@ -34,7 +34,7 @@ describe("DeletarEmpresaTest", () =>{
 
         await deletarEmpresaUseCase.execute(empresa.codigo);
         
-        const empresaRetorno = await buscarEmpresaPorCodigoUseCase.execute(empresa.nome);
+        const empresaRetorno = await buscarEmpresaPorCodigoUseCase.execute(empresa.razaoSocial);
         expect(empresaRetorno).toBeNull();
     })
 

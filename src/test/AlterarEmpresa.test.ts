@@ -14,8 +14,8 @@ describe("AlteracaoEmpresaTest", () =>{
 
     beforeEach( ()=>{
         const empresaRepository = new EmpresaRepository();
-        alterarEmpresaUseCase = new AlterarEmpresaUseCase(empresaRepository)
-        salvarEmpresaUseCase = new SalvarEmpresaUseCase(empresaRepository)
+        alterarEmpresaUseCase = new AlterarEmpresaUseCase(empresaRepository);
+        salvarEmpresaUseCase = new SalvarEmpresaUseCase(empresaRepository);
         fakeService = FakeDataService();
     })
 

@@ -2,8 +2,8 @@
 import { FakeDataService } from "../../src/services/fake.data.service";
 import { EmpresaCriacaoDto } from "../models/empresas/data/entity/Empresa";
 import { EmpresaRepository } from "../models/empresas/data/repository/EmpresaRepository";
-import { BuscarEmpresaPorCodigoUseCase } from "../models/empresas/domain/BuscarPorCodigoUseCase";
-import { SalvarEmpresaUseCase } from "../models/empresas/domain/SalvarUseCase";
+import { BuscarEmpresaPorCodigoUseCase } from "../models/empresas/domain/BuscarEmpresaPorCodigoUseCase";
+import { SalvarEmpresaUseCase } from "../models/empresas/domain/SalvarEmpresaUseCase";
 
 describe("Busca de Empresa", () => {
 

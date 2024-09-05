@@ -2,11 +2,11 @@ import { FastifyInstance, RouteShorthandOptions } from "fastify";
 
 import { UUID } from "crypto";
 import { EmpresaRepository } from "../data/repository/EmpresaRepository";
-import { SalvarEmpresaUseCase } from "../domain/SalvarUseCase";
-import { BuscarEmpresaPorCodigoUseCase } from "../domain/BuscarPorCodigo";
-import { AlterarEmpresaUseCase } from "../domain/AlterarUseCase";
-import { DeletarEmpresaUseCase } from "../domain/DeletarUseCase";
-import { BuscarTodasEmpresasUseCase } from "../domain/BuscarTodasEmpresas";
+import { SalvarEmpresaUseCase } from "../domain/SalvarEmpresaUseCase";
+import { BuscarEmpresaPorCodigoUseCase } from "../domain/BuscarEmpresaPorCodigoUseCase";
+import { AlterarEmpresaUseCase } from "../domain/AlterarEmpresaUseCase";
+import { DeletarEmpresaUseCase } from "../domain/DeletarEmpresaUseCase";
+import { BuscarTodasEmpresasUseCase } from "../domain/BuscarTodasEmpresasUseCase";
 import { EmpresaCriacaoDto, EmpresaUpdateDto } from "../data/entity/Empresa";
 
 export const empresaControllers = (fastify: FastifyInstance,

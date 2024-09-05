@@ -2,8 +2,8 @@
 import { FakeDataService } from "../../src/services/fake.data.service";
 import { EmpresaCriacaoDto, EmpresaUpdateDto } from "../models/empresas/data/entity/Empresa";
 import { EmpresaRepository } from "../models/empresas/data/repository/EmpresaRepository";
-import { AlterarEmpresaUseCase } from "../models/empresas/domain/AlterarUseCase";
-import { SalvarEmpresaUseCase } from "../models/empresas/domain/SalvarUseCase";
+import { AlterarEmpresaUseCase } from "../models/empresas/domain/AlterarEmpresaUseCase";
+import { SalvarEmpresaUseCase } from "../models/empresas/domain/SalvarEmpresaUseCase";
 
 
 describe("AlteracaoEmpresaTest", () =>{

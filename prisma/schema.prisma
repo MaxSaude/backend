@@ -27,12 +27,3 @@ model Empresa {
   dataCriacao   DateTime @default(now())
   dataAlteracao DateTime @default(now())
 }
-
-model Agendamento {
-  cpf           String   @id @default(uuid())
-  nome          String   @unique
-  nomeEmpresa   String
-  tipoConsulta  String
-  dataCriacao   DateTime @default(now())
-  dataAlteracao DateTime @default(now())
-}

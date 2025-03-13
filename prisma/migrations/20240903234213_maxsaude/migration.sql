@@ -7,6 +7,7 @@ CREATE TABLE "usuario" (
     CONSTRAINT "usuario_pkey" PRIMARY KEY ("codigo")
 );
 
+-- CreateTable
 CREATE TABLE "Empresa" (
     "codigo" TEXT NOT NULL,
     "razaoSocial" TEXT NOT NULL,
@@ -18,17 +19,5 @@ CREATE TABLE "Empresa" (
     CONSTRAINT "Empresa_pkey" PRIMARY KEY ("codigo")
 );
 
-CREATE TABLE "Agendamento" (
-    "cpf" TEXT NOT NULL,
-    "nome" TEXT NOT NULL,
-    "nomeEmpresa" TEXT NOT NULL,
-    "tipoConsulta" TEXT NOT NULL,
-    "dataCriacao" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "dataAlteracao" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "Agendamento_pkey" PRIMARY KEY ("cpf")
-);
-
 -- CreateIndex
 CREATE UNIQUE INDEX "Empresa_razaoSocial_key" ON "Empresa"("razaoSocial");
-CREATE UNIQUE INDEX "Agendamento_nome_key" ON "Agendamento"("nome");

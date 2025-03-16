@@ -39,7 +39,7 @@ export const agendamentoControllers = (fastify: FastifyInstance,
             console.log(request.params.id)
 
             const id = request.params.id;
-            const agendamento = buscarAgendamentoPorNomeUseCase.execute(id);
+            const agendamento = buscarAgendamentoPorCpfUseCase.execute(id);
 
             if (agendamento) {
                 reply.code(200).send(agendamento)

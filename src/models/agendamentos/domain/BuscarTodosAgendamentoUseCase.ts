@@ -1,7 +1,7 @@
 import { Agendamento } from "../data/entity/Agendamento"
 import { AgendamentoRepository } from "../data/repository/AgendamentoRepository"
 
-export class BuscarTodasAgendamentosUseCase {
+export class BuscarTodosAgendamentoUseCase {
 
     constructor(private agendamentoRepository: AgendamentoRepository) { }
 

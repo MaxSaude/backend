@@ -23,7 +23,9 @@ describe("Busca de Agendamento", () => {
         const agendamentoCriacaoDto: AgendamentoCriacaoDto = {
             nome: fakeService.nome,
             nomeEmpresa: fakeService.nome,
-            tipoConsulta: fakeService.nome
+            tipoConsulta: fakeService.nome,
+            data: fakeService.nome,
+            horario: fakeService.nome,
         }
         const agendamento = await salvarAgendamentoUseCase.execute(agendamentoCriacaoDto);
 
@@ -34,6 +36,8 @@ describe("Busca de Agendamento", () => {
         expect(agendamento.nome).toBe(agendamentoBusca!.nome)
         expect(agendamento.nomeEmpresa).toBe(agendamentoBusca!.nomeEmpresa)
         expect(agendamento.tipoConsulta).toBe(agendamentoBusca!.tipoConsulta)
+        expect(agendamento.data).toBe(agendamento.data);
+        expect(agendamento.horario).toBe(agendamento.horario);
     })
 
     it('verificar agendamento não encontrada', async () => {

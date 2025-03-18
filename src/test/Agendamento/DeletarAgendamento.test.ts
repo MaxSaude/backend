@@ -27,6 +27,8 @@ describe("DeletarAgendamentoTest", () =>{
             nome: fakeService.nome,
             nomeEmpresa: fakeService.nome,
             tipoConsulta: fakeService.nome,
+            data: fakeService.nome,
+            horario: fakeService.nome,
         }
         const agendamento = await salvarAgendamentoUseCase.execute(agendamentoCriacaoDto);
 

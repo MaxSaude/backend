@@ -20,7 +20,9 @@ describe('SalvarAgendamento', () => {
         const agendamentoCriacaoDto: AgendamentoCriacaoDto = {
             nome: fakeService.nome,
             nomeEmpresa: fakeService.nome,
-            tipoConsulta: fakeService.nome
+            tipoConsulta: fakeService.nome,
+            data: fakeService.nome,
+            horario: fakeService.nome,
         }
 
         const agendamento = await salvarAgendamentoUseCase.execute(agendamentoCriacaoDto);
@@ -30,6 +32,8 @@ describe('SalvarAgendamento', () => {
         expect(agendamentoCriacaoDto.nome).toBe(agendamento.nome);
         expect(agendamentoCriacaoDto.nomeEmpresa).toBe(agendamento.nomeEmpresa);
         expect(agendamentoCriacaoDto.tipoConsulta).toBe(agendamento.tipoConsulta);
+        expect(agendamento.data).toBe(agendamento.data);
+        expect(agendamento.horario).toBe(agendamento.horario);
 
     })
 

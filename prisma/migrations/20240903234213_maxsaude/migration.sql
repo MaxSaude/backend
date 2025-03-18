@@ -24,6 +24,8 @@ CREATE TABLE "Agendamento" (
     "nome" TEXT NOT NULL,
     "nomeEmpresa" TEXT NOT NULL,
     "tipoConsulta" TEXT NOT NULL,
+    "horario" TEXT NOT NULL,
+    "data" TEXT NOT NULL,
     "dataCriacao" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "dataAlteracao" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 

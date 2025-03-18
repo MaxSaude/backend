@@ -24,14 +24,18 @@ describe("AlteracaoAgendamentoTest", () =>{
         const agendamentoCriacaoDto: AgendamentoCriacaoDto = {
             nome: fakeService.nome,
             nomeEmpresa: fakeService.nome,
-            tipoConsulta: fakeService.nome
+            tipoConsulta: fakeService.tipoConsulta,
+            data: fakeService.nome,
+            horario: fakeService.nome,
         }
         const agendamento = await salvarAgendamentoUseCase.execute(agendamentoCriacaoDto);
 
         const agendamentoAlterarDto : AgendamentoUpdateDto = {
             nome: fakeService.nome,
             nomeEmpresa: "UPDATE AGENDAMENTO",
-            tipoConsulta: "UPDATE AGENDAMENTO"
+            tipoConsulta: "UPDATE AGENDAMENTO",
+            data: "UPDATE AGENDAMENTO",
+            horario: "UPDATE AGENDAMENTO",
         }
 
         const agendamentoUpdate = 
@@ -40,7 +44,9 @@ describe("AlteracaoAgendamentoTest", () =>{
         expect(agendamentoUpdate).toBeDefined()
         expect(agendamentoUpdate.cpf).toBe(agendamento.cpf);
         expect(agendamentoUpdate.nomeEmpresa).toBe(agendamentoAlterarDto.nomeEmpresa);
-        expect(agendamentoUpdate.tipoConsulta).toBe(agendamentoAlterarDto.tipoConsulta)
+        expect(agendamentoUpdate.tipoConsulta).toBe(agendamentoAlterarDto.tipoConsulta);
+        expect(agendamentoUpdate.data).toBe(agendamentoAlterarDto.data);
+        expect(agendamentoUpdate.horario).toBe(agendamentoAlterarDto.horario);
     })
 
 })

@@ -3,16 +3,22 @@ export interface Agendamento {
     nome: string;
     nomeEmpresa: string;
     tipoConsulta: string;
+    data: string;
+    horario: string;
   }
   
   export interface AgendamentoCriacaoDto {
     nome: string;
     nomeEmpresa: string;
     tipoConsulta: string;
+    data: string;
+    horario: string;
   }
   
   export interface AgendamentoUpdateDto {
     nome?: string;
     nomeEmpresa?: string;
     tipoConsulta?: string;
+    data: string;
+    horario: string;
   }

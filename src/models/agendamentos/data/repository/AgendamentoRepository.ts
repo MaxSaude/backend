@@ -20,7 +20,6 @@ export class AgendamentoRepository implements AgendamentoRepositoryInterface {
             console.log(error)
             throw new Error('Falha ao salvar agendamento');
         }
-
     }
 
     async buscarAgendamentoPorCpf(cpf: string): Promise<Agendamento | null> {

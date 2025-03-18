@@ -24,7 +24,7 @@ describe("AlteracaoAgendamentoTest", () =>{
         const agendamentoCriacaoDto: AgendamentoCriacaoDto = {
             nome: fakeService.nome,
             nomeEmpresa: fakeService.nome,
-            tipoConsulta: fakeService.tipoConsulta,
+            tipoConsulta: fakeService.nome,
             data: fakeService.nome,
             horario: fakeService.nome,
         }

@@ -15,7 +15,7 @@ describe('SalvarAgendamento', () => {
         fakeService = FakeDataService();
     })
 
-    it('teste de criação de nova agendamento', async () => {
+    it('teste de criação de novo agendamento', async () => {
 
         const agendamentoCriacaoDto: AgendamentoCriacaoDto = {
             nome: fakeService.nome,

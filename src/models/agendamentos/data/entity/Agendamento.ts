@@ -19,6 +19,6 @@ export interface Agendamento {
     nome?: string;
     nomeEmpresa?: string;
     tipoConsulta?: string;
-    data: string;
-    horario: string;
+    data?: string;
+    horario?: string;
   }

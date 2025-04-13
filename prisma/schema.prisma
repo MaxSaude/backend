@@ -23,18 +23,28 @@ model Empresa {
   codigo        String   @id @default(uuid())
   razaoSocial   String   @unique
   nomeFantasia  String
-  cnpj          String
+  cnpj          String   @unique
   dataCriacao   DateTime @default(now())
   dataAlteracao DateTime @default(now())
+  pacientes Paciente[]
 }
 
 model Agendamento {
   cpf           String   @id @default(uuid())
-  nome          String   @unique
+  nome          String   
   nomeEmpresa   String
   tipoConsulta  String
   data          String
   horario       String
   dataCriacao   DateTime @default(now())
   dataAlteracao DateTime @default(now())
+}
+
+model Paciente {
+  codigo     String   @id @default(uuid())
+  nome       String
+  cpf        String
+  contato    String
+  empresaId  String
+  empresa    Empresa  @relation(fields: [empresaId], references: [codigo])
 }

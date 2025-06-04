@@ -20,18 +20,18 @@ model usuario {
 }
 
 model Empresa {
-  codigo        String   @id @default(uuid())
-  razaoSocial   String   @unique
+  codigo        String     @id @default(uuid())
+  razaoSocial   String     @unique
   nomeFantasia  String
-  cnpj          String   @unique
-  dataCriacao   DateTime @default(now())
-  dataAlteracao DateTime @default(now())
-  pacientes Paciente[]
+  cnpj          String     @unique
+  dataCriacao   DateTime   @default(now())
+  dataAlteracao DateTime   @default(now())
+  pacientes     Paciente[]
 }
 
 model Agendamento {
   cpf           String   @id @default(uuid())
-  nome          String   
+  nome          String
   nomeEmpresa   String
   tipoConsulta  String
   data          String
@@ -41,10 +41,10 @@ model Agendamento {
 }
 
 model Paciente {
-  codigo     String   @id @default(uuid())
-  nome       String
-  cpf        String
-  contato    String
-  empresaId  String
-  empresa    Empresa  @relation(fields: [empresaId], references: [codigo])
+  codigo    String  @id @default(uuid())
+  nome      String
+  cpf       String  @unique
+  contato   String
+  empresaId String
+  empresa   Empresa @relation(fields: [empresaId], references: [codigo])
 }

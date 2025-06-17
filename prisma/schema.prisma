@@ -20,21 +20,37 @@ model usuario {
 }
 
 model Empresa {
-  codigo        String   @id @default(uuid())
-  razaoSocial   String   @unique
+  codigo        String     @id @default(uuid())
+  razaoSocial   String     @unique
   nomeFantasia  String
-  cnpj          String
-  dataCriacao   DateTime @default(now())
-  dataAlteracao DateTime @default(now())
+  cnpj          String     @unique
+  dataCriacao   DateTime   @default(now())
+  dataAlteracao DateTime   @default(now())
+  pacientes     Paciente[]
 }
 
 model Agendamento {
   cpf           String   @id @default(uuid())
-  nome          String   @unique
+  nome          String
   nomeEmpresa   String
   tipoConsulta  String
   data          String
   horario       String
   dataCriacao   DateTime @default(now())
   dataAlteracao DateTime @default(now())
+}
+
+model Paciente {
+  codigo      String  @id @default(uuid())
+  nome        String
+  cpf         String  @unique
+  contato     String
+  empresaId   String
+  cidade      String?
+  bairro      String?
+  estado      String?
+  endereco    String?
+  numero      String?
+  complemento String?
+  empresa     Empresa @relation(fields: [empresaId], references: [codigo])
 }

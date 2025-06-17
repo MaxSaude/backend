@@ -5,6 +5,7 @@ import { BuscarPacientePorCodigoUseCase } from "../../models/pacientes/domain/Bu
 import { DeletarPacienteUseCase } from "../../models/pacientes/domain/DeletarUseCase";
 import { SalvarPacienteUseCase } from "../../models/pacientes/domain/SalvarUseCase";
 import prisma from "../../config/database";
+import { v4 as uuidv4 } from "uuid";
 
 describe("DeletarPacienteTest", () => {
 
@@ -23,20 +24,29 @@ describe("DeletarPacienteTest", () => {
         // Limpa os registros existentes na tabela Paciente
         await prisma.paciente.deleteMany();
 
+        // Aguarda um tick do event loop para garantir a deleção
+        await new Promise(resolve => setTimeout(resolve, 10));
+
+        // (Opcional) Verifica se ainda há pacientes
+        const pacientesRestantes = await prisma.paciente.count();
+        if (pacientesRestantes > 0) {
+            throw new Error(`Ainda existem ${pacientesRestantes} pacientes no banco!`);
+        }
+
         // Limpa os registros existentes na tabela Empresa
         await prisma.empresa.deleteMany();
 
-        // Insere um registro de teste na tabela Empresa
-        const empresaId = "valid_empresa_id"; // ID válido para a empresa
+        // Agora pode criar a empresa normalmente
+        const empresaId = uuidv4();
+        const razaoSocial = "Empresa Teste " + empresaId; // valor único para cada teste
         await prisma.empresa.create({
             data: {
                 codigo: empresaId,
-                razaoSocial: "Empresa Teste",
+                razaoSocial: razaoSocial,
                 nomeFantasia: "Fantasia Teste",
-                cnpj: "12345678000100"
+                cnpj: empresaId.slice(0, 14).replace(/-/g, "1") // também garante unicidade
             }
         });
-
         fakeService.empresaId = empresaId; // Define o ID válido no FakeDataService
     });
 
@@ -47,6 +57,12 @@ describe("DeletarPacienteTest", () => {
             cpf: fakeService.nome,
             contato: fakeService.nome,
             empresaId: fakeService.empresaId, // Usa o ID válido da empresa
+            cidade: fakeService.nome,
+            bairro: fakeService.nome,
+            estado: fakeService.nome,
+            endereco: fakeService.nome,
+            numero: fakeService.nome,
+            complemento: fakeService.nome,
         };
         const paciente = await salvarPacienteUseCase.execute(pacienteCriacaoDto);
 

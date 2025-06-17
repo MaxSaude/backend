@@ -41,10 +41,16 @@ model Agendamento {
 }
 
 model Paciente {
-  codigo    String  @id @default(uuid())
-  nome      String
-  cpf       String  @unique
-  contato   String
-  empresaId String
-  empresa   Empresa @relation(fields: [empresaId], references: [codigo])
+  codigo      String  @id @default(uuid())
+  nome        String
+  cpf         String  @unique
+  contato     String
+  empresaId   String
+  cidade      String?
+  bairro      String?
+  estado      String?
+  endereco    String?
+  numero      String?
+  complemento String?
+  empresa     Empresa @relation(fields: [empresaId], references: [codigo])
 }

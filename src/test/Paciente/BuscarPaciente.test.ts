@@ -4,6 +4,7 @@ import { PacienteRepository } from "../../models/pacientes/data/repository/Pacie
 import { BuscarPacientePorCodigoUseCase } from "../../models/pacientes/domain/BuscarPorCodigoUseCase";
 import { SalvarPacienteUseCase } from "../../models/pacientes/domain/SalvarUseCase";
 import prisma from "../../config/database";
+import { v4 as uuidv4 } from "uuid";
 
 describe("Busca de Paciente", () => {
 
@@ -23,18 +24,18 @@ describe("Busca de Paciente", () => {
         // Limpa os registros existentes na tabela Empresa
         await prisma.empresa.deleteMany();
 
-        // Insere um registro de teste na tabela Empresa
-        const empresaId = "valid_empresa_id"; // ID válido para a empresa
+        // Gera um ID único para a empresa
+        const empresaId = uuidv4();
         await prisma.empresa.create({
             data: {
                 codigo: empresaId,
-                razaoSocial: "Empresa Teste",
+                razaoSocial: "Empresa Teste " + empresaId,
                 nomeFantasia: "Fantasia Teste",
-                cnpj: "12345678000100"
+                cnpj: empresaId.slice(0, 14).replace(/-/g, "1")
             }
         });
 
-        fakeService.empresaId = empresaId; // Define o ID válido no FakeDataService
+        fakeService.empresaId = empresaId; // Usa o ID único gerado
     });
 
     it('Buscar paciente por Código', async () => {
@@ -43,7 +44,13 @@ describe("Busca de Paciente", () => {
             nome: fakeService.nome,
             cpf: fakeService.nome,
             contato: fakeService.nome,
-            empresaId: fakeService.empresaId // Usa o ID válido da empresa
+            empresaId: fakeService.empresaId, // Usa o ID válido da empresa
+            cidade: fakeService.nome,
+            bairro: fakeService.nome,
+            estado: fakeService.nome,
+            endereco: fakeService.nome,
+            numero: fakeService.nome,
+            complemento: fakeService.nome,
         };
         const paciente = await salvarPacienteUseCase.execute(pacienteCriacaoDto);
 
@@ -55,6 +62,12 @@ describe("Busca de Paciente", () => {
         expect(paciente.cpf).toBe(pacienteBusca!.cpf);
         expect(paciente.contato).toBe(pacienteBusca!.contato);
         expect(paciente.empresaId).toBe(pacienteBusca!.empresaId);
+        expect(paciente.cidade).toBe(pacienteBusca!.cidade);
+        expect(paciente.bairro).toBe(pacienteBusca!.bairro);
+        expect(paciente.estado).toBe(pacienteBusca!.estado);
+        expect(paciente.endereco).toBe(pacienteBusca!.endereco);
+        expect(paciente.numero).toBe(pacienteBusca!.numero);
+        expect(paciente.complemento).toBe(pacienteBusca!.complemento);
     });
 
     it('verificar Paciente não encontrado', async () => {

@@ -17,11 +17,20 @@ describe('SalvarPaciente', () => {
         // Limpa os registros existentes na tabela Paciente
         await prisma.paciente.deleteMany();
 
+        // Aguarda um tick do event loop para garantir a deleção (opcional, mas pode ajudar)
+        await new Promise(resolve => setTimeout(resolve, 10));
+
+        // Verifica se ainda há pacientes
+        const pacientesRestantes = await prisma.paciente.count();
+        if (pacientesRestantes > 0) {
+            throw new Error(`Ainda existem ${pacientesRestantes} pacientes no banco!`);
+        }
+
         // Limpa os registros existentes na tabela Empresa
         await prisma.empresa.deleteMany();
 
-        // Insere um registro de teste na tabela Empresa
-        const empresaId = "valid_empresa_id"; // ID válido para a empresa
+        // Agora pode criar a empresa normalmente
+        const empresaId = "valid_empresa_id";
         await prisma.empresa.create({
             data: {
                 codigo: empresaId,
@@ -41,6 +50,12 @@ describe('SalvarPaciente', () => {
             cpf: fakeService.nome,
             contato: fakeService.nome,
             empresaId: fakeService.empresaId, // Usa o ID válido da empresa
+            cidade: fakeService.nome,
+            bairro: fakeService.nome,
+            estado: fakeService.nome,
+            endereco: fakeService.nome,
+            numero: fakeService.nome,
+            complemento: fakeService.nome,
         };
 
         const paciente = await salvarPacienteUseCase.execute(pacienteCriacaoDto);
@@ -51,6 +66,12 @@ describe('SalvarPaciente', () => {
         expect(paciente.cpf).toBe(pacienteCriacaoDto.cpf);
         expect(paciente.contato).toBe(pacienteCriacaoDto.contato);
         expect(paciente.empresaId).toBe(pacienteCriacaoDto.empresaId);
+        expect(paciente.cidade).toBe(pacienteCriacaoDto.cidade);
+        expect(paciente.bairro).toBe(pacienteCriacaoDto.bairro);
+        expect(paciente.estado).toBe(pacienteCriacaoDto.estado);
+        expect(paciente.endereco).toBe(pacienteCriacaoDto.endereco);
+        expect(paciente.numero).toBe(pacienteCriacaoDto.numero);
+        expect(paciente.complemento).toBe(pacienteCriacaoDto.complemento);
     });
 
 });

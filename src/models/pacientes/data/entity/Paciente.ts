@@ -4,6 +4,12 @@ export interface Paciente {
     cpf: string;
     contato: string;
     empresaId: string;
+    cidade: string;
+    bairro: string;
+    estado: string;
+    endereco: string;
+    numero: string;
+    complemento: string;
 }
   
 export interface PacienteCriacaoDto {
@@ -11,6 +17,12 @@ export interface PacienteCriacaoDto {
     cpf: string;
     contato: string;
     empresaId: string;
+    cidade?: string;
+    bairro?: string;
+    estado?: string;
+    endereco?: string;
+    numero?: string;
+    complemento?: string;
 }
   
 export interface PacienteUpdateDto {
@@ -18,4 +30,10 @@ export interface PacienteUpdateDto {
     cpf?: string;
     contato?: string;
     empresaId?: string;
+    cidade?: string;
+    bairro?: string;
+    estado?: string;
+    endereco?: string;
+    numero?: string;
+    complemento?: string;
 }

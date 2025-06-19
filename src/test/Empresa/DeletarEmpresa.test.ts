@@ -27,6 +27,13 @@ describe("DeletarEmpresaTest", () =>{
             razaoSocial: fakeService.nome,
             nomeFantasia: fakeService.nome,
             cnpj: fakeService.nome,
+            telefone: fakeService.nome,
+            cidade: fakeService.nome,
+            bairro: fakeService.nome,
+            estado: fakeService.nome, 
+            endereco: fakeService.nome,
+            numero: fakeService.nome,
+            complemento: fakeService.nome,
         }
         const empresa = await salvarEmpresaUseCase.execute(empresaCriacaoDto);
 

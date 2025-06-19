@@ -20,7 +20,14 @@ describe('SalvarEmpresa', () => {
         const empresaCriacaoDto: EmpresaCriacaoDto = {
             razaoSocial: fakeService.nome,
             nomeFantasia: fakeService.nome,
-            cnpj: fakeService.nome
+            cnpj: fakeService.nome,
+            telefone: fakeService.nome,
+            cidade: fakeService.nome,
+            bairro: fakeService.nome,
+            estado: fakeService.nome, 
+            endereco: fakeService.nome,
+            numero: fakeService.nome,
+            complemento: fakeService.nome,
         }
 
         const empresa = await salvarEmpresaUseCase.execute(empresaCriacaoDto);
@@ -30,7 +37,13 @@ describe('SalvarEmpresa', () => {
         expect(empresaCriacaoDto.razaoSocial).toBe(empresa.razaoSocial);
         expect(empresaCriacaoDto.nomeFantasia).toBe(empresa.nomeFantasia);
         expect(empresaCriacaoDto.cnpj).toBe(empresa.cnpj);
-
+        expect(empresaCriacaoDto.telefone).toBe(empresa.telefone);
+        expect(empresaCriacaoDto.cidade).toBe(empresa.cidade);
+        expect(empresaCriacaoDto.bairro).toBe(empresa.bairro);
+        expect(empresaCriacaoDto.estado).toBe(empresa.estado);
+        expect(empresaCriacaoDto.endereco).toBe(empresa.endereco);
+        expect(empresaCriacaoDto.numero).toBe(empresa.numero);
+        expect(empresaCriacaoDto.complemento).toBe(empresa.complemento);
     })
 
 })

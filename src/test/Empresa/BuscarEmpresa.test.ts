@@ -23,7 +23,14 @@ describe("Busca de Empresa", () => {
         const empresaCriacaoDto: EmpresaCriacaoDto = {
             razaoSocial: fakeService.nome,
             nomeFantasia: fakeService.nome,
-            cnpj: fakeService.nome
+            cnpj: fakeService.nome,
+            telefone: fakeService.nome,
+            cidade: fakeService.nome,
+            bairro: fakeService.nome,
+            estado: fakeService.nome, 
+            endereco: fakeService.nome,
+            numero: fakeService.nome,
+            complemento: fakeService.nome,
         }
         const empresa = await salvarEmpresaUseCase.execute(empresaCriacaoDto);
 
@@ -34,6 +41,13 @@ describe("Busca de Empresa", () => {
         expect(empresa.razaoSocial).toBe(empresaBusca!.razaoSocial)
         expect(empresa.nomeFantasia).toBe(empresaBusca!.nomeFantasia)
         expect(empresa.cnpj).toBe(empresaBusca!.cnpj)
+        expect(empresa.telefone).toBe(empresaBusca!.telefone)
+        expect(empresa.cidade).toBe(empresaBusca!.cidade)
+        expect(empresa.bairro).toBe(empresaBusca!.bairro)
+        expect(empresa.estado).toBe(empresaBusca!.estado)
+        expect(empresa.endereco).toBe(empresaBusca!.endereco)
+        expect(empresa.numero).toBe(empresaBusca!.numero)
+        expect(empresa.complemento).toBe(empresaBusca!.complemento)
     })
 
     it('verificar Empresa não encontrada', async () => {

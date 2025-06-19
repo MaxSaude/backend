@@ -24,6 +24,13 @@ model Empresa {
   razaoSocial   String     @unique
   nomeFantasia  String
   cnpj          String     @unique
+  telefone      String?
+  cidade        String?
+  bairro        String?
+  estado        String?
+  endereco      String?
+  numero        String?
+  complemento   String?
   dataCriacao   DateTime   @default(now())
   dataAlteracao DateTime   @default(now())
   pacientes     Paciente[]
